@@ -31,6 +31,18 @@ var sum = function(array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  if (array.length === 0) {
+    return 0;
+  }
+  // if the first element is not an array:
+  //  return that first element plus the sum of all subsequent elements
+  // if the first element is an array:
+  //  return the sum of that first element plus the sum of all subsequent elements
+  if ( !(Array.isArray(array[0])) ) {
+    return array[0] + arraySum(array.slice(1));
+  } else {
+    return arraySum(array[0]) + arraySum(array.slice(1));
+  }
 };
 
 // 4. Check if a number is even.
