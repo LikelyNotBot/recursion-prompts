@@ -83,11 +83,29 @@ var sumBelow = function(n) {
   } else {
     return n + sumBelow(n);
   }
+
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  if (x <= y) {
+    x++;
+    if (x < y) {
+      var r = range(x, y);
+      return [x].concat(r);
+    } else {
+      return [];
+    }
+  } else if (x > y) {
+    x--;
+    if (x > y) {
+      var r = range(x, y);
+      return [x].concat(r);
+    } else {
+      return [];
+    }
+  }
 };
 
 // 7. Compute the exponent of a number.
