@@ -180,16 +180,16 @@ var palindrome = function(string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
-  // if y is negative
-  //   y <-- postivie copy of y (using y-y-y)
-  // if both x and y are positive:
-  //   if x is less than y, return x
-  //   subtract y from x; return modulo(x, y)
-  // if x is negative and y is positive:
-  //   _x <-- + copy of x (using x-x-x)
-  //   if _x is less than y, return x
-  //   return modulo(x+y, y);
-  var modulo = function(x, y) {
+// if y is negative
+//   y <-- postivie copy of y (using y-y-y)
+// if both x and y are positive:
+//   if x is less than y, return x
+//   subtract y from x; return modulo(x, y)
+// if x is negative and y is positive:
+//   _x <-- + copy of x (using x-x-x)
+//   if _x is less than y, return x
+//   return modulo(x+y, y);
+var modulo = function(x, y) {
   if (y < 0) {
     y = y-y-y;
   }
@@ -218,7 +218,32 @@ var palindrome = function(string) {
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
-
+  if (x === 0 || y === 0) {
+    return 0;
+  }
+  if (y === 1) {
+    return x;
+  }
+  if (x === 1) {
+    return y;
+  }
+  if (x < 0 && y < 0) {
+    x = x-x-x;
+    y = y-y-y;
+  }
+  if (x > 0 && y > 0) {
+    return x + multiply(x, y-1);
+  }
+  if (x < 0 && y > 0) {
+    x = x-x-x;
+    var product = x + multiply(x, y-1);
+    return (product-product-product);
+  }
+  if (x > 0 && y < 0) {
+    y = y-y-y;
+    var product = x + multiply(x, y-1);
+    return (product-product-product);
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
