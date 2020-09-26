@@ -154,7 +154,26 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-};
+  // ignore spaces and capital letters
+  string = string.toLowerCase().replace(/\s/, '');
+  // if the length is one, return true
+  // if the first and last chars aren't the same, return false
+  //   else if the length is 2, return true
+  //   else if the length is > 2, return palindrome(the string, less its first and last chars) 
+  if (string.length === 1) {
+    return true;
+  }
+  if (string[0] !== string[string.length-1]) {
+    return false;
+  }
+  if (string.length === 2) {
+    return true;
+  }
+  if (string.length > 2) {
+    return palindrome(string.slice(1, string.length-1));
+  }
+
+}; // 'racecar' --> true?
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
