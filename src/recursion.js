@@ -173,19 +173,52 @@ var palindrome = function(string) {
     return palindrome(string.slice(1, string.length-1));
   }
 
-}; // 'racecar' --> true?
+};
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
-var modulo = function(x, y) {
+  // if y is negative
+  //   y <-- postivie copy of y (using y-y-y)
+  // if both x and y are positive:
+  //   if x is less than y, return x
+  //   subtract y from x; return modulo(x, y)
+  // if x is negative and y is positive:
+  //   _x <-- + copy of x (using x-x-x)
+  //   if _x is less than y, return x
+  //   return modulo(x+y, y);
+  var modulo = function(x, y) {
+  if (y < 0) {
+    y = y-y-y;
+  }
+  if (y === 0) {
+    return NaN;
+  }
+  if (x === 0) {
+    return 0;
+  }
+  if (x > 0) {
+    if (x < y) {
+      return x;
+    }
+    x = x - y;
+    return modulo(x, y);
+  }
+  if (x < 0) {
+    var _x = x-x-x;
+    if (_x < y) {
+      return x;
+    }
+    return modulo(x+y, y);
+  }
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
