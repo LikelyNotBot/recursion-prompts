@@ -245,7 +245,7 @@ var multiply = function(x, y) {
     return (product-product-product);
   }
 };
-// commit
+
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
 var divide = function(x, y) {
@@ -274,7 +274,23 @@ var divide = function(x, y) {
 // gcd(4,36); // 4
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
+
+// The Euclidean Algorithm for finding GCD(A,B) is as follows:
+//     If x = 0 then GCD(x,y)=y, since the GCD(0,y)=y, and we can stop.  
+//     If y = 0 then GCD(x,y)=x, since the GCD(x,0)=x, and we can stop.  
+//     Write x in quotient remainder form (x = y⋅Q + R)
+//     Find GCD(y,R) using the Euclidean Algorithm since GCD(x,y) = GCD(y,R)
 var gcd = function(x, y) {
+  if (x < 0 | y < 0) {
+    return null;
+  }
+  if (x === 0) {
+    return y;
+  }
+  if (y === 0) {
+    return x;
+  }
+  return gcd(y, x%y);
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
