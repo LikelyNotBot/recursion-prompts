@@ -340,6 +340,38 @@ var buildList = function(value, length) {
 // For numbers which are multiples of both three and five, output “FizzBuzz” instead of the number.
 // fizzBuzz(5) // ['1','2','Fizz','4','Buzz']
 var fizzBuzz = function(n) {
+  
+  if (n == 0) {
+    return;
+  }
+
+  if (typeof globalVariable_fizzBuzz_array === 'undefined' || globalVariable_fizzBuzz_array === 'deleted') { // this is bad
+    globalVariable_fizzBuzz_array = [];
+    var returnFlag = true;
+  }
+
+  var el = '';
+  if (n % 3 === 0) {
+    el += 'Fizz';
+  }
+  if (n % 5 === 0) {
+    el += 'Buzz';
+  }
+  if (el === '') {
+    el += n;
+  }
+
+  globalVariable_fizzBuzz_array.unshift(el);
+  fizzBuzz(n-1);
+
+  if (returnFlag) {
+    var result = [];
+    for (var i=0; i < globalVariable_fizzBuzz_array.length; i++) {
+      result.push(globalVariable_fizzBuzz_array[i]);
+    }
+    globalVariable_fizzBuzz_array = 'deleted';
+    return result;
+  }
 };
 
 // 20. Count the occurence of a value in a list.
