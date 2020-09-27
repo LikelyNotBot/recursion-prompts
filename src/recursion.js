@@ -345,8 +345,8 @@ var fizzBuzz = function(n) {
     return;
   }
 
-  if (typeof globalVariable_fizzBuzz_array === 'undefined' || globalVariable_fizzBuzz_array === 'deleted') { // this is bad
-    globalVariable_fizzBuzz_array = [];
+  if (typeof globalVariable_fizzBuzz_array_be1cde26b027f0 === 'undefined' || globalVariable_fizzBuzz_array_be1cde26b027f0 === 'deleted') { // this is bad
+    globalVariable_fizzBuzz_array_be1cde26b027f0 = [];
     var returnFlag = true;
   }
 
@@ -361,15 +361,15 @@ var fizzBuzz = function(n) {
     el += n;
   }
 
-  globalVariable_fizzBuzz_array.unshift(el);
+  globalVariable_fizzBuzz_array_be1cde26b027f0.unshift(el);
   fizzBuzz(n-1);
 
   if (returnFlag) {
     var result = [];
-    for (var i=0; i < globalVariable_fizzBuzz_array.length; i++) {
-      result.push(globalVariable_fizzBuzz_array[i]);
+    for (var i=0; i < globalVariable_fizzBuzz_array_be1cde26b027f0.length; i++) {
+      result.push(globalVariable_fizzBuzz_array_be1cde26b027f0[i]);
     }
-    globalVariable_fizzBuzz_array = 'deleted';
+    globalVariable_fizzBuzz_array_be1cde26b027f0 = 'deleted';
     return result;
   }
 };
